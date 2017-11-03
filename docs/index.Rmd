@@ -10,9 +10,9 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 ## Functions
 
-<a href="https://bdbest.shinyapps.io/terrapulse-gui/"><i class="fa fa-map-marker"></i> Find a Place</a>
+<h2><a href="https://bdbest.shinyapps.io/terrapulse-gui/"><i class="fa fa-map-marker"></i> Find a Place</a></h2>
 
-<a href="https://bdbest.shinyapps.io/terrapulse-dashboard/"><i class="fa fa-line-chart"></i> Get Pulse on a Place</a>
+<h2><a href="https://bdbest.shinyapps.io/terrapulse-dashboard/"><i class="fa fa-line-chart"></i> Get Pulse on a Place</a></h2>
 
 
 
