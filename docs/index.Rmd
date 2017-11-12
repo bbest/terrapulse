@@ -11,16 +11,18 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 <h2><a href="https://bdbest.shinyapps.io/terrapulse-gui/">
   <span class="fa-stack fa-lg">
     <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
+    <!--i class="fa fa-map-marker fa-stack-1x fa-inverse"></i-->
+    <i class="fa fa-map-o fa-stack-1x fa-inverse"></i>
   </span>
   Find a Place</a></h2>
 
 <h2><a href="https://bdbest.shinyapps.io/terrapulse-dashboard/">
   <span class="fa-stack fa-lg">
     <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-line-chart fa-stack-1x fa-inverse"></i>
+    <!--i class="fa fa-line-chart fa-stack-1x fa-inverse"></i-->
+    <i class="fa fa-dashboard fa-stack-1x fa-inverse"></i>
   </span>
-  Get Pulse on a Place</a></h2>
+  Get the Pulse on a Place</a></h2>
 
 
 
