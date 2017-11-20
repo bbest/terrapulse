@@ -1,0 +1,12 @@
+name: terrapulse-gui
+title: terrapulse-gui
+username:
+account: bdbest
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 231613
+bundleId: 1057600
+url: https://bdbest.shinyapps.io/terrapulse-gui/
+when: 1509708939.59769
+asMultiple: FALSE
+asStatic: FALSE

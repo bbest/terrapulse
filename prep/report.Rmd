@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Ben Best"
+date: "November 3, 2017"
+output: bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## R Markdown
+
+```{r pressure, echo=FALSE}
+library(shiny)
+library(shinydashboard)
+library(rmarkdown)
+
+valueBox(paste0(25, "%"), "Progress", icon = shiny::icon("list"), color = "purple") #  
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
