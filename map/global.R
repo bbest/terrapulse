@@ -1,24 +1,15 @@
 # load packages
 library(tidyverse)
-#library(stringr)
-#library(rgdal)
-library(sf)
-#library(raster)
 library(leaflet)
-devtools::load_all('~/github/leaflet.extras')
+#devtools::load_all('~/github/leaflet.extras')
+library(leaflet.extras) # devtools::install_github('bbest/leaflet.extras')
 library(rmarkdown)
-#library(leaflet.extras) # devtools::install_github('bhaskarvk/leaflet.extras')
 library(shiny)
 library(shinydashboard)
-#library(htmlwidgets)
-#library(htmltools)
+library(jsonlite)
+library(xts)
 library(RColorBrewer)
 library(dygraphs)
-
-# library(jsonlite)
-# library(xts)
-# library(dygraphs)
-# library(mapview)
 
 select = dplyr::select
 addLegend = leaflet::addLegend
@@ -52,7 +43,7 @@ layers = list(
 
 # setwd('app')
 #shp = 'data/utah_zip.shp'
-#shp = './data/Parcels_Summit.shp'
+#shp = 'prep/data/Parcels_Summit/Parcels_Summit.shp'
 #zip = read_sf(shp) # plot(zip['ndvi'])
 
 # zip = zip %>%

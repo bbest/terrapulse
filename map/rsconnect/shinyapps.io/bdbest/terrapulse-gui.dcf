@@ -5,8 +5,8 @@ account: bdbest
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 231613
-bundleId: 1087670
+bundleId: 1087684
 url: https://bdbest.shinyapps.io/terrapulse-gui/
-when: 1511265041.50144
+when: 1511265747.4262
 asMultiple: FALSE
 asStatic: FALSE

@@ -1,17 +1,20 @@
 # app
 
-A [Shiny](http://shiny.rstudio.com/) app will be created in this folder that provides an interactive web interface to data layers, particularly for implementing alternative weights and sliders to ocean use layers for identifying areas of conflict.
+A [Shiny](http://shiny.rstudio.com/) app that provides an interactive map interface to data layers.
 
 You can find this app here:
 
-[ecoquants.shiny.io/nrel-uses](https://ecoquants.shinyapps.io/nrel-uses/)
+[bdbest.shinyapps.io/terrapulse-gui](https://bdbest.shinyapps.io/terrapulse-gui/) 
 
-[![](images/app_screen.png)](https://ecoquants.shinyapps.io/nrel-uses/)
+OR
 
+[mbon.marine.usf.edu:3838/terrapulse/map/](http://mbon.marine.usf.edu:3838/terrapulse/map/)
 
-Files hosted here can also be directly run from a local desktop instance of the [R]() statistical programming language:
+Files hosted here can also be directly run from a local desktop instance of the [R](https://www.r-project.org) statistical programming language:
+
+You'll need to have all the R packages listed in [`global.R`](https://github.com/bbest/terrapulse/blob/master/map/global.R) installed first, including the custom `leaflet.extras` package installable with `devtools::install_github('bbest/leaflet.extras')` after `install.packages('devtools')`.
 
 ```r
 library(shiny) # install.packages('shiny')
-runGitHub('ecoquants/nrel-uses', subdir='app')
+runGitHub('bbest/terrapulse', subdir='map')
 ```
