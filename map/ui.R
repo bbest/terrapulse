@@ -40,6 +40,7 @@ dashboardPage(
   
   # body ----
   dashboardBody(
+    tags$head(tags$script(src='style_parcels.js')),
     tags$style(type = "text/css", "#map {height: calc(100vh - 140px) !important;}"),
     tabBox(
       id = 'tab_viz', width=12,
@@ -48,4 +49,7 @@ dashboardPage(
         leafletOutput('map')),
       tabPanel(
         'Temporal',
-          dygraphOutput('ts_dygraph')))))
+          dygraphOutput('ts_dygraph'),
+        conditionalPanel(
+          condition = "input.sel_mvt_poly === undefined",
+          p('Please choose a parcel to see NDVI over time.'))))))

@@ -1,23 +1,38 @@
 library(tidyverse)
 library(jsonlite)
 library(xts)
+#library(lubridate)
 library(dygraphs)
 library(leaflet)
 library(mapview)
 
-x = -108.47892530078518
-y =   41.06222969618248
-txt = fromJSON(sprintf('http://terrapulse.com:8080/_ndvi?x=%g&y=%g', x, y))
+#x = -108.47892530078518
+#y =   41.06222969618248
+#txt = fromJSON(sprintf('http://terrapulse.com:8080/_ndvi?x=%g&y=%g', x, y))
 
-d = tibble(
-  date = as.Date(txt$data[,1]),
-  NDVI  = as.numeric(txt$data[,2]))
+fid = 27312
+url = sprintf('http://terrapulse.com:8080/_ndvi_poly?id=UT_parcel_Summit_%d', fid)
+d = fromJSON(url) %>% as_tibble()
+if (nrow(d)==0)
+  d = matrix(rep(NA, 3), ncol=3) %>% as_tibble()
+d = d %>%
+  select(date=1, mean=2, sd=3) %>%
+  mutate(
+    date = as.Date(date),
+    mean = as.numeric(mean),
+    sd   = as.numeric(sd),
+    lwr_sd = mean - sd,
+    upr_sd = mean + sd) %>%
+  select(-sd)
+
 x = xts(select(d, -date), order.by=d$date)
 
-p = dygraph(x) %>%
-  dyAxis('y', label = 'NDVI') #%>%
+dygraph(x, main=sprintf('NDVI for Parcel (%d)', fid)) %>%
+  dySeries(c('lwr_sd', 'mean', 'upr_sd')) %>%
+  dyAxis('y', label = 'NDVI') %>%
+  dyOptions(colors = 'green') %>% 
+  dyRangeSelector()
 
-p
   #dyRangeSelector()
 
 leaflet() %>%

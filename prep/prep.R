@@ -25,7 +25,7 @@ p = parcels %>%
 
 
 # poly2ndvi() ----
-poly2ndvi = function(poly_id, id_pfx='UT_parcel_Summit_', cache_dir='~/github/terrapulse/map/cache', cache_pfx='ndvi_', cache_zero_pad=5, return_df=T){
+poly2ndvi = function(poly_id, id_pfx='UT_parcel_Summit_', cache_dir='~/github/terrapulse/cache', cache_pfx='ndvi_', cache_zero_pad=5, return_df=T){
   # poly_id = 50; id_pfx='UT_parcel_Summit_'; cache_dir='~/github/terrapulse/map/cache'; cache_pfx='ndvi_'; cache_zero_pad=5
   
   csv_cache = sprintf(paste0('%s/%s%s%0', cache_zero_pad,'d.csv'), cache_dir, cache_pfx, id_pfx, poly_id)
@@ -85,15 +85,13 @@ p = read_sf(p_in_shp) #%>% # nrow(p): 34,873
   #filter(fid < 3800)
 
 p %>% 
-  filter(fid > 21471) %>% 
+  #filter(fid > 21471) %>% 
   .$fid %>%
   walk(poly2ndvi, return_df=F)
 # ndvi_UT_parcel_Summit_21472.csv - 2017-11-18 17:43:43
 # ndvi_UT_parcel_Summit_21524.csv - 2017-11-18 17:45:27
 
 
-
-i = 0 # of 34873, start 19:07:25
 p = p %>%
   st_transform(leaflet:::epsg4326) %>%
   as_tibble() %>%
@@ -109,8 +107,17 @@ p = p %>%
 p = p %>%
   mutate(
     ndvi_mean = map_dbl(ndvi_df, ~ last(as.numeric(.x$mean))),
-    ndvi_sd   = map_dbl(ndvi_df, ~ last(as.numeric(.x$sd))))
+    ndvi_sd   = map_dbl(ndvi_df, ~ last(as.numeric(.x$sd))),
+   area_km2 = st_area(geometry) / (1000*1000)) 
 
+head(p)
+
+p %>%
+  select(FIPS, PARCEL_ID, PARCEL_ZIP, OWN_TYPE, RECORDER, ParcelsCur, ParcelsRec, ParcelsPub, ParcelYear, fid, ndvi_mean, ndvi_sd, area_km2) %>%
+  write_csv('~/github/terrapulse/map/data/parcels.csv')
+
+p %>%
+  unnest()
 
 #d = poly2ndvi('UT_parcel_Summit_21462')
 # TODO: add issue for Min: setup ndvi service to fetch mean+sd for all parcels given date
